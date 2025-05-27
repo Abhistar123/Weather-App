@@ -179,7 +179,7 @@ body{
     text-align: center;
     border-radius: 30px;
     cursor: pointer;
-    display: none;
+    /* display: none; */
     
 }
 
