@@ -8,3 +8,5 @@
 <p>https://api.openweathermap.org/data/2.5/weather?q=bangalore&appid=2d6443380377276c46edee780338adf7<p><br>
 <p> after fetchng response for json format <p><br>
 <p> then storing data in var=data <p><br>
+
+<p> new update i am adding the current location button to find geolocation of the user <p>

@@ -14,7 +14,7 @@ body{
 .container{
     width: 90%;
     max-width: 470px;
-    background: linear-gradient(135deg , #29bd95, #5b548a);
+    background: linear-gradient(135deg , #0b4535, #20194a);
     padding: 40px 35px;
     margin: 100px auto 0;
     text-align: center;
@@ -164,6 +164,23 @@ body{
         width: 100%;
         justify-content: flex-start;
     }
+}
+.location {
+    display: flex;
+    justify-content: center; /* centers the button horizontally */
+    margin-top: 20px;        /* adds space above */
+}
+
+.location button{
+    border: none;
+    outline: none;
+    margin: 20px 10px 30px;
+    padding: 20px 10px 20px;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    display: none;
+    
 }
 
 

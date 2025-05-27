@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <div class="container">
+        <div class="location">
+            <button class="location-btn">Current location </button>
+        </div>
         <div class="search">
             <input type="text" placeholder="Enter your city name " spellcheck="false">
             <button><img src="images/search (1).png" alt=""></button>
@@ -51,7 +55,9 @@
 
         if(response.status == 404){ /* if city not found give the response 404 then.....hum error div ka para Invalid city name dikhayenge  */
            document.querySelector(".error").style.display="block";/* error div me me para tha usko block means Show krayenge */
+           
            document.querySelector(".weather").style.display="none";/*weather ke andar wale div show nahi krayenge  we can say details of weather*/
+           document.querySelector(".location button").style.display="none";
         } else{
             // console.log(data);
 
@@ -74,6 +80,7 @@
 
          document.querySelector(".weather").style.display="block"; /*weather div me starting me css laga hain display:none ---> matlab weather deatils show nhi hoga ---> so after enter city name display:block means all div block(show) show honge */
          document.querySelector(".error").style.display="none";/* jab weather details show hoga toh error msg show nhi krayenge */
+         document.querySelector(".location button").style.display="block";/*location div show hoga*/
   
         }
         
@@ -82,6 +89,39 @@
     searchbuttn.addEventListener("click",()=>{
         CheckWeather(searchBox.value);  /* searchBox value hume city name dega ....phir city name ko CheckWeather function me pass karega city ko phir api ke through call hoga phir information dega like....temp , wind , humidity */
     });
+
+
+    /* adding live location when click on current location button */
+
+    const locationBtn = document.querySelector(".location-btn");
+
+    locationBtn.addEventListener("click", () => {
+     if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                if (data && data.name) {
+                    CheckWeather(data.name); // Call your existing function
+                } else {
+                    alert("City not found using your location.");
+                }
+            } catch (error) {
+                alert("Failed to fetch location weather.");
+            }
+        }, () => {
+            alert("Location permission denied.");
+        });
+    } else {
+        alert("Geolocation not supported by this browser.");
+    }
+});
+
 
    
 </script>    
