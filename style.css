@@ -26,6 +26,8 @@ body{
     display: flex; /* search wale div ko horizontal layout(row) mein rakhta hain */
     justify-content: space-between ; /* search wale div me do(2) content ke bich space rakhta hain */
     align-items: center;
+    padding: 5px;
+    border-radius: 30px;
 
 }
 .search input{
@@ -38,14 +40,23 @@ body{
     padding: 10px 25px;
     margin-right: 16px;
     font-size: 20px;  /* andar ka text size badane ke liye */
-     flex: 1; /* jo bhi type krenge khali jgah ko bhi bhar degaa (fill the remaining space)  flex grow */
+    flex: 1; /* jo bhi type krenge khali jgah ko bhi bhar degaa (fill the remaining space)  flex grow
+    Makes the input take up the remaining horizontal space. */
 }
 .search button{
+      width: 60px;  /* Sets fixed size so it doesn’t overflow or expand. */
+      height: 60px; /* Sets fixed size so it doesn’t overflow or expand. */
       background: #ebfffc;
       border-radius: 50%;
+      padding: 8px;
+      margin-right: 5px;
       border: 0;
       outline: 0;
       cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;  /* prevent button from shrinking */
 
 }
 
@@ -80,13 +91,21 @@ body{
     display: flex;  /* row wise krne ke liye humidity and wind ko display flex krenge */
     align-items: center; /* jo bhi display flex krenge uske beech me center krenge */
     justify-content: space-between; /* jo bhi display flex krenge uske beech me space dene ke liy */
-    padding: 0 20px;
-    margin-top: 50px;
+    padding: 0 10px;
+    margin-top: 40px;
+    gap: 10px; /* optional: Adds spacing between elements without breaking layout.
+ */
+    flex-wrap: wrap; /* allow items to wrap if space is tight */
+                     /*Allows .col blocks to wrap to a new line on small screens. */
 }
 .col{
     display: flex; /* row wise krne ke liye */
     align-items: center;
     text-align: left;
+    min-width: 120px; /* prevent text from squashing */
+                      /*Prevents .col from shrinking too small.*/
+    flex: 1 1 45%; /* allow flexibility on small screens */
+                   /*Makes .col responsive: takes up space but wraps when needed.*/
     
 }
 .col img{
