@@ -156,7 +156,7 @@ body{
     }
 
     .details {
-        flex-direction: column; /* stack humidity and wind vertically */
+        
         align-items: flex-start;
     }
 
@@ -165,6 +165,8 @@ body{
         justify-content: flex-start;
     }
 }
+
+
 
 
 
